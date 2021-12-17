@@ -31,7 +31,7 @@ const createUser = (data) => {
                 throw ("error connecting to mysql db", err);
             }
 
-            dbConn.query(`insert into user (email, phone, name, employment_status) values(${data.email}, ${data.phone}, ${data.name}, ${data.employment_status});`, function (error, results, fields) {
+            dbConn.query(`insert into user (email, phone, name, employment_status) values('${data.email}', '${data.phone}', '${data.name}', '${data.employment_status}');`, function (error, results, fields) {
                 MysqlClient.close(dbConn);
                 if (error) {
                     console.log(error);
@@ -45,5 +45,6 @@ const createUser = (data) => {
 }
 
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    createUser
 };
